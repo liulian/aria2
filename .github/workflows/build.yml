@@ -50,8 +50,7 @@ jobs:
         ./configure \
           ARIA2_STATIC=yes \
           --with-gnutls --without-openssl --without-appletls --without-wintls \
-          --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt' --enable-libaria2 --enable-static \
-          CPPFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address"
+          --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
     - name: Build aria2
       run: |
         make
