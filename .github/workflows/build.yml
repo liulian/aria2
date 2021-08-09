@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-20.04, macos-10.15]
+        os: [ubuntu-20.04]
         compiler: [gcc, clang]
 
     steps:
@@ -31,11 +31,6 @@ jobs:
           libssh2-1-dev \
           libcppunit-dev \
           libgnutls28-dev nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev libxml2-dev zlib1g-dev libsqlite3-dev pkg-config \
-    - name: MacOS setup
-      if: runner.os == 'macOS'
-      run: |
-        brew install cppunit gettext openssl libssh2 c-ares sqlite3 \
-          autoconf automake pkg-config libtool
     - name: Setup clang
       if: matrix.compiler == 'clang'
       run: |
@@ -56,13 +51,6 @@ jobs:
           ARIA2_STATIC=yes \
           --with-gnutls --without-openssl --without-appletls --without-wintls \
           --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt' \
-          CPPFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address"
-    - name: Configure autotools (macOS)
-      if: runner.os == 'macOS'
-      run: |
-        ./configure \
-          --without-openssl --without-gnutls --with-appletls \
-          --disable-nls \
           CPPFLAGS="-fsanitize=address" LDFLAGS="-fsanitize=address"
     - name: Build aria2
       run: |
