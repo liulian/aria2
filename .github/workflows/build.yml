@@ -60,5 +60,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: aria2c
-        path: aria2/aria2/aria2c
+        name: aria2_binary
+        path: aria2
