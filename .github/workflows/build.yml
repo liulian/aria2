@@ -18,7 +18,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get install \
-          g++-10 \
+          g++-8 \
           autoconf \
           automake \
           autotools-dev \
@@ -32,7 +32,7 @@ jobs:
           libssh2-1-dev \
           libcppunit-dev \
           libgnutls28-dev nettle-dev libgmp-dev libc-ares-dev libxml2-dev \
-          libunistring-dev libp11-kit-dev libasan6 libasan6-amd64-cross
+          libunistring-dev libp11-kit-dev
 #     - name: Setup clang
 #       if: matrix.compiler == 'clang'
 #       run: |
@@ -41,8 +41,8 @@ jobs:
     - name: Setup gcc
       if: runner.os == 'Linux' && matrix.compiler == 'gcc'
       run: |
-        echo 'CC=gcc-10' >> $GITHUB_ENV
-        echo 'CXX=g++-10' >> $GITHUB_ENV
+        echo 'CC=gcc-8' >> $GITHUB_ENV
+        echo 'CXX=g++-8' >> $GITHUB_ENV
     - name: Libtool
       run: |
         autoreconf -i
