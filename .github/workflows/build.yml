@@ -61,4 +61,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: aria2_binary
-        path: aria2
+        path: /home/runner/work/aria2
